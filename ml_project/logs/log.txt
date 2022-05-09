@@ -1,0 +1,31 @@
+LOGGER FILE. SCRIPT RUN AT 2022-05-09 17:10:32.597527
+
+INFO:root:Train started
+DEBUG:root:target was separated
+DEBUG:root:data split in ratio 0.200000
+DEBUG:root:train shape (237, 13)
+DEBUG:root:test shape (60, 13)
+DEBUG:root:data was processed
+DEBUG:root:model was created
+DEBUG:root:data standartized, constants were saved
+DEBUG:root:model was fitted
+DEBUG:root:model saved to ./models/lgbm.pkl
+INFO:root:prediction started
+DEBUG:root:data processed
+DEBUG:root:scaler was set to test mode
+DEBUG:root:model was loaded
+DEBUG:root:data standartized, constants were read
+DEBUG:root:predic preformed
+INFO:root:prediction finished
+DEBUG:root:
+               precision    recall  f1-score   support
+
+           0       0.63      0.95      0.76        20
+           1       0.97      0.72      0.83        40
+
+    accuracy                           0.80        60
+   macro avg       0.80      0.84      0.79        60
+weighted avg       0.86      0.80      0.81        60
+
+INFO:root:Train finished
+INFO:root:Script successfully executed

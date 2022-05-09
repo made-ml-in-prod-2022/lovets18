@@ -1,0 +1,9 @@
+marshmallow_dataclass
+pandas
+numpy
+click
+pyyaml
+sklearn
+lightgbm
+xgboost
+catboost
