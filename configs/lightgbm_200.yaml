@@ -1,0 +1,17 @@
+model: LightGBM
+feature_processing:
+    drop_low_cor: True
+    scale: True
+hyperparams:
+    n_estimators: 200
+    random_state: 42
+train_test_split:
+    shuffle: True
+    test_size: 0.1
+    random_state: 42
+pathes:
+    train_data: 'data/heart_cleveland_upload.csv'
+    test_data: './data/test_data.csv'
+    output_data: 'output/prediction.csv'
+    model_path: './models/lgbm.pkl'
+    logger_path: './ml_project/logs/log.txt'
