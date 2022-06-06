@@ -20,12 +20,6 @@ jobs:
         python -m pip install flake8
         pip install pylint
         pip install -r requirements.txt
-    - name: Analysing the code with pylint
-      run: |
-        pylint $(git ls-files '*.py')
-    - name: Analysing the code with flake8
-      run: |
-        flake8 --ignore=E402 $(git ls-files '*.py')
     - name: Run tests
       run: |
         python -m tests.tests
