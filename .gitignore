@@ -2,3 +2,6 @@
 .idea
 Новый текстовый документ.txt
 catboost_info
+.pytest_cache
+.cache
+.vscode/

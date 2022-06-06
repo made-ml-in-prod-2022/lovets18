@@ -5,5 +5,7 @@ click
 pyyaml
 sklearn
 lightgbm
-xgboost
-catboost
+fastapi
+uvicorn
+pytest
+requests

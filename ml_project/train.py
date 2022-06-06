@@ -34,39 +34,32 @@ def prepare_split(data: pd.DataFrame, params: PipelineParams):
 
 def create_model(params: PipelineParams):
     """Build model according the params"""
-    if params.feature_processing.scale:
-        model = Pipeline([('scaler', Standartizer()), ])
-    else:
-        model = Pipeline([])
+
     if params.model == 'LightGBM':
-        model.steps.append([
-            'lgbm',
-            LGBMClassifier(n_estimators=params.hyperparams.n_estimators,
-                           random_state=params.hyperparams.random_state)])
+        model_type = LGBMClassifier(n_estimators=params.hyperparams.n_estimators,
+                                    random_state=params.hyperparams.random_state)
     elif params.model == "XGBoost":
-        model.steps.append([
-            'lgbm',
-            XGBClassifier(n_estimators=params.hyperparams.n_estimators,
+        model_type = XGBClassifier(n_estimators=params.hyperparams.n_estimators,
                           random_state=params.hyperparams.random_state,
                           use_label_encoder=False,
-                          verbosity=0)])
+                          verbosity=0)
     elif params.model == "CatBoost":
-        model.steps.append([
-            'lgbm',
-            CatBoostClassifier(
+        model_type = CatBoostClassifier(
                 n_estimators=params.hyperparams.n_estimators,
                 random_state=params.hyperparams.random_state,
                 verbose=None, silent=True,
-                logging_level=None)])
+                logging_level=None)
     elif params.model == "RandomForest":
-        model.steps.append([
-            'lgbm',
-            RandomForestClassifier(
+        model_type = RandomForestClassifier(
                 n_estimators=params.hyperparams.n_estimators,
-                random_state=params.hyperparams.random_state)])
+                random_state=params.hyperparams.random_state)
     else:
         logging.error('Incorrect model: %s', params.model)
         return None
+    if params.feature_processing.scale:
+        model = Pipeline([('scaler', Standartizer()), ('model', model_type)])
+    else:
+        model = Pipeline([('model', model_type)])
     return model
 
 

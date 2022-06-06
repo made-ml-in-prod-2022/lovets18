@@ -1,7 +1,7 @@
 model: LightGBM
 feature_processing:
-    drop_low_cor: True
-    scale: True
+    drop_low_cor: False
+    scale: False
 hyperparams:
     n_estimators: 200
     random_state: 42
