@@ -36,5 +36,7 @@ def predict(
         logging.debug(
             "prediction was saved to %s", predict_params.pathes.output_data
         )
-    logging.info('%s finished', "evaluation" if evaluate_mode else "prediction")
+    logging.info(
+        '%s finished', "evaluation" if evaluate_mode else "prediction"
+    )
     return result.predict.values

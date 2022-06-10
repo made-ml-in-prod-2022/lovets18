@@ -23,7 +23,10 @@ def run(config_path: str):
     params = read_params_config(config_path)
     with open(params.pathes.logger_path, "w", encoding="utf-8") as file:
         file.write(f"LOGGER FILE. SCRIPT RUN AT {datetime.utcnow()}\n\n")
-    logging.basicConfig(level=logging.DEBUG, filename=params.pathes.logger_path)
+    logging.basicConfig(
+        level=logging.DEBUG,
+        filename=params.pathes.logger_path
+    )
     train_data = load_data(params.pathes.train_data)
     test_data = load_data(params.pathes.test_data)
     if train_data is None and test_data is None:
