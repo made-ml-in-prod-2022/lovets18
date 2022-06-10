@@ -1,6 +1,9 @@
 model: RandomForest
+stages:
+    train: True
+    predict: False
 feature_processing:
-    drop_low_cor: False
+    drop_low_cor: []
     scale: True
 hyperparams:
     n_estimators: 50
@@ -11,7 +14,7 @@ train_test_split:
     random_state: 42
 pathes:
     train_data: 'data/heart_cleveland_upload.csv'
-    test_data: ''
-    output_data: ''
-    model_path: './models/lgbm.pkl'
+    test_data: './data/test_data.csv'
+    output_data: 'output/prediction.csv'
+    model_path: './models/rf.pkl'
     logger_path: './ml_project/logs/log.txt'

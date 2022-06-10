@@ -2,16 +2,20 @@
 from dataclasses import dataclass
 import yaml
 from marshmallow_dataclass import class_schema
+
+
 from .features_processing import FeatureProcessing
 from .hyperpaprams import Hyperparams
 from .train_test_split import TrainTestSplit
 from .pathes_data import Pathes
+from .stages import Stages
 
 
 @dataclass()
 class PipelineParams:
     """Dataclass for reading all params from yaml"""
     model: str
+    stages: Stages
     feature_processing: FeatureProcessing
     hyperparams: Hyperparams
     train_test_split: TrainTestSplit

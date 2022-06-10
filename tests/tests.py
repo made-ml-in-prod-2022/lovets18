@@ -1,10 +1,12 @@
-"""Tests for preprocessing data and running model"""
+"""Module for testing ml_project code"""
 import os
 import unittest
 import pandas as pd
 import numpy as np
-from ml_project.preprocess import Standartizer, preprocess_data
-from ml_project.main import run
+from ml_project.preprocess import (
+    Standartizer, preprocess_data
+)  # pylint:disable=E0401
+from ml_project.main import run  # pylint:disable=E0401
 
 
 def create_df(num: int, target=False):
@@ -59,19 +61,19 @@ class TestPreprocess(unittest.TestCase):
         """Test for fiilna"""
         data = self.data.copy()
         data.loc[0, 0] = np.nan
-        data = preprocess_data(data)
+        data = preprocess_data(data, [])
         self.assertFalse(data.isna().sum().sum())
 
     def test_preprocess_drop(self):
         """Test for drop low_cor_cols"""
         data = self.data.copy()
-        data = preprocess_data(data, True)
+        data = preprocess_data(data, ["chol", "restecg"])
         self.assertEqual(data.shape[1], 11)
 
     def test_preprocess_no_drop(self):
         """Test for no drop"""
         data = self.data.copy()
-        data = preprocess_data(data)
+        data = preprocess_data(data, [])
         self.assertEqual(data.shape[1], 13)
 
 

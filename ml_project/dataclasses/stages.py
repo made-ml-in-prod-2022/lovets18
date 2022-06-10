@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 
 @dataclass()
-class FeatureProcessing:
+class Stages:
     """Dataclass with feature processing actions from yaml"""
-    drop_low_cor: list[str]
-    scale: bool
+    train: bool
+    predict: bool

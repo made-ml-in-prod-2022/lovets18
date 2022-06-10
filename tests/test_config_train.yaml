@@ -1,6 +1,9 @@
 model: LightGBM
+stages:
+    train: True
+    predict: False
 feature_processing:
-    drop_low_cor: True
+    drop_low_cor: []
     scale: True
 hyperparams:
     n_estimators: 100

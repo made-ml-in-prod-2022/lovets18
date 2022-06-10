@@ -1,31 +1,42 @@
-LOGGER FILE. SCRIPT RUN AT 2022-05-09 17:10:32.597527
+LOGGER FILE. SCRIPT RUN AT 2022-06-10 09:06:11.792216
 
 INFO:root:Train started
 DEBUG:root:target was separated
-DEBUG:root:data split in ratio 0.200000
-DEBUG:root:train shape (237, 13)
-DEBUG:root:test shape (60, 13)
+DEBUG:root:data split in ratio 0.100000
+DEBUG:root:train shape (267, 13)
+DEBUG:root:test shape (30, 13)
+DEBUG:root:features chol, restecg were dropped
 DEBUG:root:data was processed
 DEBUG:root:model was created
 DEBUG:root:data standartized, constants were saved
 DEBUG:root:model was fitted
 DEBUG:root:model saved to ./models/lgbm.pkl
-INFO:root:prediction started
+INFO:root:evaluation started
+DEBUG:root:features chol, restecg were dropped
 DEBUG:root:data processed
 DEBUG:root:scaler was set to test mode
 DEBUG:root:model was loaded
 DEBUG:root:data standartized, constants were read
-DEBUG:root:predic preformed
-INFO:root:prediction finished
+DEBUG:root:predict preformed
+INFO:root:evaluation finished
 DEBUG:root:
                precision    recall  f1-score   support
 
-           0       0.63      0.95      0.76        20
-           1       0.97      0.72      0.83        40
+           0       0.85      0.69      0.76        16
+           1       0.71      0.86      0.77        14
 
-    accuracy                           0.80        60
-   macro avg       0.80      0.84      0.79        60
-weighted avg       0.86      0.80      0.81        60
+    accuracy                           0.77        30
+   macro avg       0.78      0.77      0.77        30
+weighted avg       0.78      0.77      0.77        30
 
 INFO:root:Train finished
+INFO:root:prediction started
+DEBUG:root:features chol, restecg were dropped
+DEBUG:root:data processed
+DEBUG:root:scaler was set to test mode
+DEBUG:root:model was loaded
+DEBUG:root:data standartized, constants were read
+DEBUG:root:predict preformed
+DEBUG:root:prediction was saved to output/prediction.csv
+INFO:root:prediction finished
 INFO:root:Script successfully executed
