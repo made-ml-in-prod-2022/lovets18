@@ -1,0 +1,20 @@
+model: LightGBM
+stages:
+    train: True
+    predict: False
+feature_processing:
+    drop_low_cor: ["chol", "restecg"]
+    scale: True
+hyperparams:
+    n_estimators: 100
+    random_state: 42
+train_test_split:
+    shuffle: True
+    test_size: 0.15
+    random_state: 42
+pathes:
+    train_data: ''
+    test_data: 'tests/data/test.csv'
+    output_data: 'tests/data/prediction.csv'
+    model_path: 'tests/data/lgbm.pkl'
+    logger_path: 'tests/data/testlog.txt'
