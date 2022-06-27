@@ -8,15 +8,10 @@
   docker build -t airflow-ml-base:latest .
 ```
 Настройка переменных окружения:
-  
-  export FERNET_KEY=$(python -c "from cryptography.fernet import Fernet; FERNET_KEY = Fernet.generate_key().decode(); print(FERNET_KEY)")
-
+`export FERNET_KEY=$(python -c "from cryptography.fernet import Fernet; FERNET_KEY = Fernet.generate_key().decode(); print(FERNET_KEY)")`
 Также необходимо добавить в airflow variables /data/models/{{ds}}/model.pkl
 
-Для запуска airflow из корня:
-  
-  docker compose up --build
-  
+Для запуска airflow из корня: `docker compose up --build` 
   
   Легенда:
 1) Откуда-то берутся данные... Мы их используем для обучения МЛ модельки для задачи классификации.
