@@ -7,11 +7,13 @@ from docker.types import Mount
 
 
 GENERATE_DIR_NAME = "data/raw/{{ ds }}"
-MOUNT_SOURCE = [Mount(
-            source="C:/Users/Вова/Desktop/Учеба/ML_PROD/hm3/data",
-            target="/data",
-            type='bind'
-            )]
+MOUNT_SOURCE = [
+    Mount(
+        source="C:/Users/Вова/Desktop/Учеба/ML_PROD/hm3/data",
+        target="/data",
+        type="bind",
+    )
+]
 default_args = {
     "owner": "lovets",
     "email": ["airflow@example.com"],
@@ -21,10 +23,10 @@ default_args = {
 
 
 with DAG(
-        "data_generator",
-        default_args=default_args,
-        schedule_interval="@daily",
-        start_date=days_ago(0),
+    "data_generator",
+    default_args=default_args,
+    schedule_interval="@daily",
+    start_date=days_ago(0),
 ) as dag:
     generate = DockerOperator(
         image="airflow_data_generate",
@@ -32,7 +34,7 @@ with DAG(
         task_id="generate_data",
         do_xcom_push=False,
         network_mode="bridge",
-        mounts=MOUNT_SOURCE
+        mounts=MOUNT_SOURCE,
     )
 
     generate

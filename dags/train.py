@@ -13,9 +13,8 @@ TRANSFORMER_DIR_NAME = "/data/preprocess_pipeline/{{ ds }}"
 MODEL_DIR_NAME = "/data/models/{{ ds }}"
 MOUNT_SOURCE = Mount(
     source="C:/Users/Вова/Desktop/Учеба/ML_PROD/hm3/data",
-    target="/data",
-    type='bind'
-    )
+    target="/data", type="bind"
+)
 
 default_args = {
     "owner": "lovets",
@@ -26,10 +25,10 @@ default_args = {
 
 
 with DAG(
-        "train",
-        default_args=default_args,
-        schedule_interval="@weekly",
-        start_date=days_ago(0),
+    "train",
+    default_args=default_args,
+    schedule_interval="@weekly",
+    start_date=days_ago(0),
 ) as dag:
 
     preprocess_data = DockerOperator(
@@ -38,7 +37,7 @@ with DAG(
         task_id="preprocess",
         do_xcom_push=False,
         network_mode="bridge",
-        mounts=[MOUNT_SOURCE]
+        mounts=[MOUNT_SOURCE],
     )
 
     split_data = DockerOperator(
@@ -47,7 +46,7 @@ with DAG(
         task_id="split",
         do_xcom_push=False,
         network_mode="bridge",
-        mounts=[MOUNT_SOURCE]
+        mounts=[MOUNT_SOURCE],
     )
 
     train_model = DockerOperator(
@@ -56,7 +55,7 @@ with DAG(
         task_id="fit",
         do_xcom_push=False,
         network_mode="bridge",
-        mounts=[MOUNT_SOURCE]
+        mounts=[MOUNT_SOURCE],
     )
 
     validate_model = DockerOperator(
@@ -65,8 +64,7 @@ with DAG(
         task_id="validation",
         do_xcom_push=False,
         network_mode="bridge",
-        mounts=[MOUNT_SOURCE]
+        mounts=[MOUNT_SOURCE],
     )
-
 
     preprocess_data >> split_data >> train_model >> validate_model

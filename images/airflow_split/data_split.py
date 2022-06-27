@@ -23,13 +23,24 @@ def split(dir_from: str, val_size: float) -> None:
     features = pd.read_csv(os.path.join(dir_from, FEATURES_FILENAME))
     targets = pd.read_csv(os.path.join(dir_from, TARGETS_FILENAME))
 
-    train_features, val_features, train_targets, val_targets = train_test_split(features, targets, test_size=val_size)
+    train_features, val_features,\
+        train_targets, val_targets = train_test_split(
+            features, targets, test_size=val_size
+        )
 
-    train_features.to_csv(os.path.join(dir_from, TRAIN_FEATURES_FILENAME), index=False)
-    train_targets.to_csv(os.path.join(dir_from, TRAIN_TARGETS_FILENAME), index=False)
+    train_features.to_csv(
+        os.path.join(dir_from, TRAIN_FEATURES_FILENAME), index=False
+    )
+    train_targets.to_csv(
+        os.path.join(dir_from, TRAIN_TARGETS_FILENAME), index=False
+    )
 
-    val_features.to_csv(os.path.join(dir_from, VAL_FEATURES_FILENAME), index=False)
-    val_targets.to_csv(os.path.join(dir_from, VAL_TARGETS_FILENAME), index=False)
+    val_features.to_csv(
+        os.path.join(dir_from, VAL_FEATURES_FILENAME), index=False
+    )
+    val_targets.to_csv(
+        os.path.join(dir_from, VAL_TARGETS_FILENAME), index=False
+    )
 
 
 if __name__ == "__main__":

@@ -25,10 +25,12 @@ def preprocess(dir_from: str, dir_in: str, transform_dir: str) -> None:
     features = pd.read_csv(os.path.join(dir_from, FEATURES_FILENAME))
     targets = pd.read_csv(os.path.join(dir_from, TARGETS_FILENAME))
 
-    preprocessor = Pipeline([
-        ("fillna", SimpleImputer(missing_values=np.nan, strategy='mean')),
-        ("scaler", StandardScaler())
-    ])
+    preprocessor = Pipeline(
+        [
+            ("fillna", SimpleImputer(missing_values=np.nan, strategy="mean")),
+            ("scaler", StandardScaler()),
+        ]
+    )
 
     preprocessor.fit(features)
 
@@ -37,7 +39,7 @@ def preprocess(dir_from: str, dir_in: str, transform_dir: str) -> None:
     features_prep.to_csv(os.path.join(dir_in, FEATURES_FILENAME), index=False)
     targets.to_csv(os.path.join(dir_in, TARGETS_FILENAME), index=False)
 
-    with open(os.path.join(transform_dir, TRANSFORM_MODEL_FILENAME), 'wb') as file:
+    with open(os.path.join(transform_dir, TRANSFORM_MODEL_FILENAME), "wb") as file:
         pickle.dump(preprocessor, file)
 
 

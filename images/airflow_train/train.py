@@ -23,9 +23,9 @@ def train(dir_from: str, dir_in: str) -> None:
     xgb_clf = XGBClassifier()
     xgb_clf.fit(features, targets)
 
-    with open(os.path.join(dir_in, MODEL_PATH), 'wb') as file:
+    with open(os.path.join(dir_in, MODEL_PATH), "wb") as file:
         pickle.dump(xgb_clf, file)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     train()

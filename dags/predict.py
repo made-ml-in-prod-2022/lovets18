@@ -16,9 +16,8 @@ MODEL_PATH = Variable.get("MODEL_PATH")
 
 MOUNT_SOURCE = Mount(
     source="C:/Users/Вова/Desktop/Учеба/ML_PROD/hm3/data",
-    target="/data",
-    type='bind'
-    )
+    target="/data", type="bind"
+)
 
 
 default_args = {
@@ -29,10 +28,10 @@ default_args = {
 }
 
 with DAG(
-        "predict",
-        default_args=default_args,
-        schedule_interval="@daily",
-        start_date=days_ago(0),
+    "predict",
+    default_args=default_args,
+    schedule_interval="@daily",
+    start_date=days_ago(0),
 ) as dag:
 
     predict = DockerOperator(
@@ -41,7 +40,7 @@ with DAG(
         task_id="predict",
         do_xcom_push=False,
         network_mode="bridge",
-        mounts=[MOUNT_SOURCE]
+        mounts=[MOUNT_SOURCE],
     )
 
     predict
