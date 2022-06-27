@@ -1,6 +1,6 @@
-.ipynb_checkpoints
-.idea
-Новый текстовый документ.txt
-catboost_info
-pycache
-__pycache__
+data/
+.idea/
+screenshoots/
+*.ipynb
+__pycache__/
+*/__pycache__/
